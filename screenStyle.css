@@ -1,0 +1,234 @@
+body {
+    font-family: 'Press Start 2P', sans-serif;
+    font-size: 10px;
+    margin: 0;
+    padding: 0;
+    background-color: #291a18;
+    color: #eeeeef;
+    background-image: linear-gradient(to bottom, rgba(41, 26, 24, 0), rgba(41, 26, 24, 1)), url('fig/background-image.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(1px);
+}
+
+
+
+header {
+    position: relative;
+    background-size: cover;
+    background-position: center;
+    color: #eeeeef;
+    width: 100%;
+    height: 8vh;
+    padding: 10px 20px;
+    border-radius: 10px;
+    box-sizing: border-box;
+    margin: 10px auto;
+    max-width: 1480px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-blend-mode: overlay;
+}
+
+header::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(28, 0, 0, 0.56);
+    border-radius: 10px;
+    z-index: -1;
+}
+
+
+
+header .logo_h {
+    position: relative;
+}
+
+header .logo_h img {
+    transition: transform 0.3s ease;
+    width: 60px;
+    height: auto;
+}
+
+header .logo_h img:hover {
+    transform: scale(1.2);
+}
+
+header .logo_h::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -5px;
+    height: 4px;
+    background-color: transparent;
+    border-radius: 10px;
+    transition: background-color 0.3s ease;
+}
+
+header .logo_h:hover::after {
+    background-color: #ffc991;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: flex-end;
+}
+
+nav ul li {
+    margin: 0;
+    position: relative;
+}
+
+nav ul li a {
+    color: #eeeeef;
+    text-decoration: none;
+    font-size: 1.5em;
+    padding: 10px 15px;
+    position: relative;
+    display: inline-block;
+}
+
+nav ul li a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 4px;
+    background-color: transparent;
+    border-radius: 10px;
+    transition: background-color 0.3s ease;
+}
+
+nav ul li a:hover::after {
+    background-color: #ffc991;
+}
+
+.logo-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative; /* Добавлено для управления z-index */
+    z-index: 2; /* Поднимите его выше остальных элементов */
+    padding: 20px; /* Отступы для улучшения визуализации */
+    border-radius: 10px; /* Закругление углов для стиля */
+}
+
+
+.logo-container h1 {
+    font-size: 25px;
+    color: #eeeeef;
+    font-weight: normal;
+    text-align: center;
+    margin-top: 10px;
+    transition: transform 0.1s ease-out;
+}
+
+.logo-container p {
+    font-size: 15px;
+    color: rgba(238, 238, 239, 0.88);
+    font-weight: normal;
+    text-align: center;
+    margin-top: 10px;
+    transition: transform 0.1s ease-out;
+    line-height: 1.5;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center; /* Центрирует кнопки */
+    gap: 20px; /* Расстояние между кнопками */
+    margin-top: 20px; /* Отступ сверху */
+}
+
+.button {
+    -webkit-text-size-adjust: 100%;
+    -webkit-font-smoothing: antialiased;
+    --light-background: #edf0f4;
+    --light-border: #dadee3;
+    --scroll: 0;
+    font-family: inherit;
+    font-size: .92em;
+    font-weight: normal;
+    text-transform: uppercase;
+    box-sizing: border-box;
+    margin: 0;
+    scrollbar-color: var(--light-background) transparent;
+    scrollbar-width: thin;
+    color: inherit;
+    text-decoration: none;
+    display: block;
+    padding: 20px 28px;
+    border: 1px solid var(--light-border); /* Добавьте границу, если нужно */
+    transition: transform 0.3s ease; /* Плавный переход для трансформации */
+}
+
+.button.scale-up {
+    transform: scaleX(1.1); /* Увеличение на 10% по X */
+}
+
+.button.scale-down {
+    transform: scaleX(0.9); /* Уменьшение на 10% по X */
+}
+
+.fireflies-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; /* Чтобы не мешать взаимодействию с другими элементами */
+    overflow: hidden; /* Убедитесь, что светлячки не выходят за пределы экрана */
+}
+
+.firefly {
+    position: absolute;
+    width: 8px; /* Размер светлячка */
+    height: 8px; /* Размер светлячка */
+    border-radius: 50%; /* Круглая форма */
+    background-color: rgba(255, 146, 96, 0.8); /* Цвет светлячка */
+    box-shadow: 0 0 8px rgba(255, 206, 200, 0.8); /* Эффект свечения */
+    opacity: 0;
+    animation: glow 1s infinite; /* Анимация свечения */
+}
+
+@keyframes glow {
+    0%, 100% {
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+}
+
+
+
+main {
+    padding: 40px 20px;
+    text-align: center;
+    max-width: 890px;
+    margin: auto;
+    color: #eeeeef;
+}

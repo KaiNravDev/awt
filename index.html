@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hlavná stránka</title>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="screenStyle.css">
+  <link rel="icon" href="/fig/icon.svg">
+  <style>
+    body {
+      font-family: 'Press Start 2P', sans-serif;
+      font-size: 10px;
+      margin: 0;
+      padding: 0;
+      background-color: #291a18; /* Основной фон */
+      color: #eeeeef;
+      background-image: linear-gradient(to bottom, rgba(41, 26, 24, 0), rgba(41, 26, 24, 1)), url('fig/background-image.jpg');
+      background-repeat: no-repeat;
+      background-size: cover; /* Убедитесь, что фон занимает всю площадь */
+      background-attachment: fixed;
+      height: 100vh; /* Убедитесь, что тело занимает всю высоту окна */
+      overflow: hidden; /* Скрываем возможные полосы прокрутки */
+    }
+
+    .fireflies-container {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none; /* Позволяем клики проходить через контейнер светлячков */
+    }
+
+    /* Новый стиль для нижнего правого угла */
+    .author-info {
+      position: absolute;
+      bottom: 10px;
+      right: 10px;
+      color: #eeeeef;
+      font-size: 8px; /* Размер шрифта */
+    }
+
+    .author-info a {
+      color: #eeeeef;
+      text-decoration: none;
+    }
+
+    .author-info a:hover {
+      text-decoration: underline; /* Подчеркивание при наведении */
+    }
+  </style>
+</head>
+<body>
+<div class="fireflies-container"></div>
+<header>
+  <div class="logo_h">
+    <a href="index.html">
+      <img src="/fig/icon.svg" alt="Logo " width="60" height="60"/>
+    </a>
+  </div>
+  <nav>
+    <ul>
+      <li><a href="article1.html">Modelovanie v Blockbenche</a></li>
+      <li><a href="article2.html">Prezentácia</a></li>
+      <li><a href="article3.html">Kontakt</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+  <div class="logo-container">
+    <div class="logo">
+      <img src="/fig/icon.svg" alt="Logo" width="200" height="200"/>
+    </div>
+    <h1>A low-poly 3D model editor</h1>
+    <div class="button-container">
+      <a href="article2.html" class="button button-article2">Prezentácia</a>
+      <a href="article3.html" class="button button-article3">Kontakt</a>
+    </div>
+    <p>Blockbench je bezplatný editor 3D modelov, ktorý umožňuje jednoduché vytváranie low-poly modelov pre hry a aplikácie.</p>
+  </div>
+</main>
+
+<!-- Добавляем информацию об авторе в нижнем правом углу -->
+<div class="author-info">
+  <p>Autor: <a href="mailto:kainrav@gmail.com">Oleksandr Molnar</a></p>
+</div>
+
+<script>
+  document.addEventListener('mousemove', (event) => {
+    const logoContainer = document.querySelector('.logo-container');
+
+    const mouseX = event.clientX;
+    const mouseY = event.clientY;
+
+    const moveX = (mouseX / window.innerWidth - 0.5) * 10;
+    const moveY = (mouseY / window.innerHeight - 0.5) * 10;
+
+    logoContainer.style.transform = `translate(${moveX}px, ${moveY}px)`;
+  });
+</script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const buttonArticle2 = document.querySelector('.button-article2');
+    const buttonArticle3 = document.querySelector('.button-article3');
+
+    buttonArticle2.addEventListener('mouseenter', () => {
+      buttonArticle2.classList.add('scale-up');
+      buttonArticle3.classList.add('scale-down');
+    });
+
+    buttonArticle2.addEventListener('mouseleave', () => {
+      buttonArticle2.classList.remove('scale-up');
+      buttonArticle3.classList.remove('scale-down');
+    });
+
+    buttonArticle3.addEventListener('mouseenter', () => {
+      buttonArticle3.classList.add('scale-up');
+      buttonArticle2.classList.add('scale-down');
+    });
+
+    buttonArticle3.addEventListener('mouseleave', () => {
+      buttonArticle3.classList.remove('scale-up');
+      buttonArticle2.classList.remove('scale-down');
+    });
+  });
+</script>
+<script>
+  function createFirefly() {
+    const firefly = document.createElement('div');
+    firefly.className = 'firefly';
+
+    const x = Math.random() * window.innerWidth;
+    const y = window.innerHeight;
+    firefly.style.left = `${x}px`;
+    firefly.style.top = `${y}px`;
+    firefly.style.opacity = '1';
+
+    const moveX = (Math.random() - 0.5) * 200;
+    const moveY = -Math.random() * (window.innerHeight + 100);
+    const duration = Math.random() * 3 + 2;
+
+    firefly.style.transition = `transform ${duration}s ease, opacity ${duration}s ease`;
+
+    document.querySelector('.fireflies-container').appendChild(firefly);
+
+    setTimeout(() => {
+      firefly.style.transform = `translate(${moveX}px, ${moveY}px)`;
+      firefly.style.opacity = '0';
+    }, 100);
+
+    setTimeout(() => {
+      firefly.remove();
+    }, (duration + 0.5) * 1000);
+  }
+
+  setInterval(createFirefly, 800);
+</script>
+</body>
+</html>
