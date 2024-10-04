@@ -69,7 +69,7 @@ header .logo_h {
 
 header .logo_h img {
     transition: transform 0.3s ease;
-    width: 60px;
+    width: 45px;
     height: auto;
 }
 
