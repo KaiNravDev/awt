@@ -104,7 +104,6 @@
     </table>
     </div>
 </main>
-<!-- Добавляем информацию об авторе в нижнем правом углу -->
 <div class="author-info">
     <p>Autor: <a href="mailto:kainrav@gmail.com">Oleksandr Molnar</a></p>
 </div>
@@ -143,15 +142,14 @@
 <script>
     var modal = document.getElementById("myModal");
 
-    // Получаем изображение и вставляем его в модальное окно
     var img = document.getElementById("myImg");
     var modalImg = document.getElementById("img01");
     var captionText = document.getElementById("caption");
 
     img.onclick = function(){
-        modal.style.display = "flex"; // Отображаем модальное окно
-        modalImg.src = this.src; // Устанавливаем источник изображения
-        captionText.innerHTML = this.alt; // Устанавливаем текст под изображением
+        modal.style.display = "flex";
+        modalImg.src = this.src;
+        captionText.innerHTML = this.alt;
     }
 
     var span = document.getElementsByClassName("close")[0];

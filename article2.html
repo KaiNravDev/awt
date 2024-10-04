@@ -32,7 +32,6 @@
     </div>
 
     <div class="image-gallery">
-        <!-- Pridajte obrázky do galérie -->
         <div class="image" id="image-1">
             <img src="https://kainravdev.github.io/awt/fig/image-1.png" alt="Image 1" width="300" id="myImg-1" style="cursor: pointer;">
         </div>
@@ -54,7 +53,6 @@
     </div>
 </main>
 
-<!-- Modálne okná pre obrázky -->
 <div id="myModal-1" class="modal" style="display:none;">
     <span class="close">&times;</span>
     <img class="modal-content" id="img01-1" alt="Image 1">
@@ -96,7 +94,6 @@
     <img class="modal-content" id="img01-10" alt="Image 10">
 </div>
 
-<!-- Добавляем информацию об авторе в нижнем правом углу -->
 <div class="author-info">
     <p>Autor: <a href="mailto:kainrav@gmail.com">Oleksandr Molnar</a></p>
 </div>
@@ -132,7 +129,6 @@
 
     setInterval(createFirefly, 800);
 
-    // Funkcia na otvorenie modálneho okna
     function openModal(imageId, modalId) {
         const img = document.getElementById(imageId);
         const modal = document.getElementById(modalId);
@@ -155,7 +151,6 @@
         }
     }
 
-    // Pridaj udalosti pre každé obrázok
     for (let i = 1; i <= 10; i++) {
         openModal(`myImg-${i}`, `myModal-${i}`);
     }

@@ -227,16 +227,16 @@ nav ul li a:hover::after {
     text-decoration: none;
     display: block;
     padding: 20px 28px;
-    border: 1px solid var(--light-border); /* Добавьте границу, если нужно */
-    transition: transform 0.3s ease; /* Плавный переход для трансформации */
+    border: 1px solid var(--light-border);
+    transition: transform 0.3s ease;
 }
 
 .button.scale-up {
-    transform: scaleX(1.1); /* Увеличение на 10% по X */
+    transform: scaleX(1.1);
 }
 
 .button.scale-down {
-    transform: scaleX(0.9); /* Уменьшение на 10% по X */
+    transform: scaleX(0.9);
 }
 
 .fireflies-container {
@@ -245,19 +245,19 @@ nav ul li a:hover::after {
     left: 0;
     width: 100%;
     height: 100%;
-    pointer-events: none; /* Чтобы не мешать взаимодействию с другими элементами */
-    overflow: hidden; /* Убедитесь, что светлячки не выходят за пределы экрана */
+    pointer-events: none;
+    overflow: hidden;
 }
 
 .firefly {
     position: absolute;
-    width: 8px; /* Размер светлячка */
-    height: 8px; /* Размер светлячка */
-    border-radius: 50%; /* Круглая форма */
-    background-color: rgba(255, 146, 96, 0.8); /* Цвет светлячка */
-    box-shadow: 0 0 8px rgba(255, 206, 200, 0.8); /* Эффект свечения */
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: rgba(255, 146, 96, 0.8);
+    box-shadow: 0 0 8px rgba(255, 206, 200, 0.8);
     opacity: 0;
-    animation: glow 1s infinite; /* Анимация свечения */
+    animation: glow 1s infinite;
 }
 
 @keyframes glow {
@@ -269,8 +269,6 @@ nav ul li a:hover::after {
     }
 }
 
-/*article1*/
-/* Заголовки и основной текст */
 h1, h2, h3 {
     color: #ffc991;
     margin: 20px 0;
@@ -295,7 +293,6 @@ p {
     color: rgba(238, 238, 239, 0.88);
 }
 
-/* Списки */
 ol, ul {
     padding-left: 20px;
     margin: 20px 0;
@@ -313,7 +310,6 @@ ol {
     list-style-type: decimal;
 }
 
-/* Изображение */
 img {
     max-width: 100%;
     height: auto;
@@ -331,7 +327,6 @@ img {
     border: 3px solid #ffffff;
 }
 
-/* Таблица */
 table {
     width: 100%;
     border-collapse: collapse;
@@ -367,7 +362,6 @@ tfoot td {
     font-weight: bold;
 }
 
-/* Ссылки */
 a {
     color: #ffc991;
     text-decoration: none;
@@ -380,26 +374,26 @@ a:hover {
 
 
 .modal {
-    display: none; /* Скрыть модальное окно по умолчанию */
-    position: fixed; /* Окончательное позиционирование */
-    z-index: 100; /* На переднем плане */
+    display: none;
+    position: fixed;
+    z-index: 100;
     left: 0;
     top: 0;
-    width: 100%; /* Полная ширина */
-    height: 100%; /* Полная высота */
-    background-color: rgba(0, 0, 0, 0.9); /* Прозрачный черный фон */
-    display: flex; /* Используем flexbox для центрирования */
-    justify-content: center; /* Центрирование по горизонтали */
-    align-items: center; /* Центрирование по вертикали */
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .modal-content {
     display: block;
     margin-top: 10%;
-    width: 80%; /* Ширина изображения в модальном окне */
-    max-width: 1000px; /* Максимальная ширина */
-    height: auto; /* Автоматическая высота */
-    z-index: 100; /* На переднем плане */
+    width: 80%;
+    max-width: 1000px;
+    height: auto;
+    z-index: 100;
 }
 
 
@@ -408,17 +402,17 @@ a:hover {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    justify-content: center; /* Центрирование */
+    justify-content: center;
     position: relative;
-    z-index: 2; /* Поднимите его выше остальных элементов */
-    padding: 20px; /* Отступы для улучшения визуализации */
-    border-radius: 10px; /* Закругление углов для стиля */
+    z-index: 2;
+    padding: 20px;
+    border-radius: 10px;
 }
 
 .image-gallery img {
-    margin: 10px; /* Отступы между изображениями */
-    max-width: 100%; /* Чтобы изображения не выходили за пределы контейнера */
-    height: auto; /* Автоматическая высота для пропорций */
+    margin: 10px;
+    max-width: 100%;
+    height: auto;
     transition: transform 0.3s ease;
 }
 
@@ -427,22 +421,22 @@ a:hover {
 }
 
 .close {
-    color: white; /* Цвет крестика */
-    position: absolute; /* Меняем на absolute для правильного позиционирования */
-    top: 80px; /* Отступ сверху для крестика */
-    right: 30px; /* Отступ справа для крестика */
-    font-size: 30px; /* Размер шрифта */
-    font-weight: bold; /* Жирный шрифт */
-    cursor: pointer; /* Указатель при наведении */
+    color: white;
+    position: absolute;
+    top: 80px;
+    right: 30px;
+    font-size: 30px;
+    font-weight: bold;
+    cursor: pointer;
 }
 
 
 
 .close:hover,
 .close:focus {
-    color: #bbb; /* Цвет при наведении */
+    color: #bbb;
     text-decoration: none;
-    cursor: pointer; /* Указатель при наведении */
+    cursor: pointer;
 }
 
 
