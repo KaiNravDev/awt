@@ -2,6 +2,7 @@
 <html lang="sk">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Modelovanie v Blockbenche</title>
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="screenStyle.css">
@@ -12,7 +13,7 @@
 <header>
     <div class="logo_h">
         <a href="index.html">
-            <img src="/fig/logo.svg" alt="Logo " width="50" height="50"/>
+            <img src="/fig/logo.svg" alt="Logo" width="50" height="50"/>
         </a>
     </div>
     <nav>
@@ -23,6 +24,90 @@
         </ul>
     </nav>
 </header>
+
+<main>
+    <div class="text-container">
+    <h1>Modelovanie low-poly v Blockbenche</h1>
+    <p>Blockbench je bezplatný nástroj na tvorbu low-poly modelov, ktorý sa stal populárnym medzi hernými vývojármi a 3D umelcami. Jeho jednoduchosť a výkonnosť ho robia ideálnym pre začiatočníkov aj pokročilých používateľov.</p>
+
+    <h2>Prečo používať Blockbench?</h2>
+    <p>Blockbench ponúka množstvo nástrojov a funkcií, ktoré vám umožnia vytvárať krásne low-poly modely rýchlo a efektívne. Je dostupný na všetkých platformách a podporuje export modelov do rôznych formátov.</p>
+    </div>
+
+    <div class="text-container-2">
+
+        <div id="myModal" class="modal" style="display:none;">
+            <span class="close">&times;</span>
+            <img class="modal-content" id="img01" alt="Ukážka modelu v Blockbenchi">
+        </div>
+        <img
+                src="/fig/blockbench_example.png"
+                srcset="
+            /fig/blockbench_example-small.png 600w,
+            /fig/blockbench_example-medium.png 1200w,
+            /fig/blockbench_example.png 1605w"
+                sizes="(max-width: 600px) 100vw,
+               (max-width: 1200px) 50vw,
+               33vw"
+                alt="Ukážka modelu v Blockbenchi"
+                width="400"
+                id="myImg"
+                style="cursor: pointer;">
+    </div>
+    <div class="text-container">
+
+
+
+        <h2>Kroky pri vytváraní modelu</h2>
+    <ol>
+        <li>Stiahnite a nainštalujte Blockbench.</li>
+        <li>Otvorte program a vytvorte nový model.</li>
+        <li>Pridajte základné geometrické tvary, ako sú kocky a valce.</li>
+        <li>Upravte rozmery a tvary podľa svojich potrieb.</li>
+        <li>Exportujte hotový model vo vhodnom formáte.</li>
+    </ol>
+
+    <h3>Výhody low-poly modelov</h3>
+    <ul>
+        <li>Nízke nároky na výkon zariadení.</li>
+        <li>Štýlový a jednoduchý dizajn.</li>
+        <li>Jednoduchá úprava a animácia.</li>
+    </ul>
+
+    <h2>Porovnanie editorov 3D modelov</h2>
+    <table>
+        <caption>Porovnanie Blockbenchu s inými editormi</caption>
+        <thead>
+        <tr>
+            <th>Editor</th>
+            <th>Platforma</th>
+            <th>Formáty</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>Blockbench</td>
+            <td>Windows, Mac, Linux</td>
+            <td>OBJ, FBX, GLTF</td>
+        </tr>
+        <tr>
+            <td>Blender</td>
+            <td>Windows, Mac, Linux</td>
+            <td>OBJ, FBX, STL, GLTF</td>
+        </tr>
+        </tbody>
+        <tfoot>
+        <tr>
+            <td colspan="3">Zdroj: Porovnanie softvérov na tvorbu 3D modelov</td>
+        </tr>
+        </tfoot>
+    </table>
+    </div>
+</main>
+<!-- Добавляем информацию об авторе в нижнем правом углу -->
+<div class="author-info">
+    <p>Autor: <a href="mailto:kainrav@gmail.com">Oleksandr Molnar</a></p>
+</div>
 <script>
     function createFirefly() {
         const firefly = document.createElement('div');
@@ -47,7 +132,6 @@
             firefly.style.opacity = '0';
         }, 100);
 
-
         setTimeout(() => {
             firefly.remove();
         }, (duration + 0.5) * 1000);
@@ -55,5 +139,34 @@
 
     setInterval(createFirefly, 800);
 </script>
-</body>
+
+<script>
+    var modal = document.getElementById("myModal");
+
+    // Получаем изображение и вставляем его в модальное окно
+    var img = document.getElementById("myImg");
+    var modalImg = document.getElementById("img01");
+    var captionText = document.getElementById("caption");
+
+    img.onclick = function(){
+        modal.style.display = "flex"; // Отображаем модальное окно
+        modalImg.src = this.src; // Устанавливаем источник изображения
+        captionText.innerHTML = this.alt; // Устанавливаем текст под изображением
+    }
+
+    var span = document.getElementsByClassName("close")[0];
+
+    span.onclick = function() {
+        modal.style.display = "none";
+    }
+
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+
+
+</script>
+    </body>
 </html>

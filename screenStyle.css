@@ -27,22 +27,27 @@ body::before {
 
 
 header {
-    position: relative;
+    position: fixed;
+    top: 1%;
+    left: 50%; /* Сместим левую часть хеддера на середину экрана */
+    transform: translateX(-50%); /* Выровняем его по центру */
+    z-index: 3;
     background-size: cover;
     background-position: center;
     color: #eeeeef;
     width: 100%;
+    max-width: 1480px;
     height: 8vh;
     padding: 10px 20px;
     border-radius: 10px;
     box-sizing: border-box;
-    margin: 10px auto;
-    max-width: 1480px;
+    margin: 0 auto;
     display: flex;
     align-items: center;
     justify-content: space-between;
     background-blend-mode: overlay;
 }
+
 
 header::before {
     content: "";
@@ -88,6 +93,23 @@ header .logo_h:hover::after {
     background-color: #ffc991;
 }
 
+.author-info {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    color: #eeeeef;
+    font-size: 8px;
+}
+
+.author-info a {
+    color: #eeeeef;
+    text-decoration: none;
+}
+
+.author-info a:hover {
+    text-decoration: underline;
+}
+
 nav ul {
     list-style: none;
     padding: 0;
@@ -108,6 +130,7 @@ nav ul li a {
     padding: 10px 15px;
     position: relative;
     display: inline-block;
+
 }
 
 nav ul li a::after {
@@ -136,6 +159,29 @@ nav ul li a:hover::after {
     border-radius: 10px; /* Закругление углов для стиля */
 }
 
+.text-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative; /* Добавлено для управления z-index */
+    z-index: 2; /* Поднимите его выше остальных элементов */
+    padding: 20px; /* Отступы для улучшения визуализации */
+    border-radius: 10px; /* Закругление углов для стиля */
+}
+.text-container-2{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative; /* Добавлено для управления z-index */
+    z-index: 5; /* Поднимите его выше остальных элементов */
+    padding: 20px; /* Отступы для улучшения визуализации */
+    border-radius: 10px; /* Закругление углов для стиля */
+}
+
+.text-container h2{
+    margin-top: 20px;
+    margin-bottom: 0;
+}
 
 .logo-container h1 {
     font-size: 25px;
@@ -223,8 +269,192 @@ nav ul li a:hover::after {
     }
 }
 
+/*article1*/
+/* Заголовки и основной текст */
+h1, h2, h3 {
+    color: #ffc991;
+    margin: 20px 0;
+}
+
+h1 {
+    font-size: 2em;
+}
+
+h2 {
+    font-size: 1.8em;
+}
+
+h3 {
+    font-size: 1.5em;
+}
+
+p {
+    font-size: 1em;
+    line-height: 1.6;
+    margin: 10px 0;
+    color: rgba(238, 238, 239, 0.88);
+}
+
+/* Списки */
+ol, ul {
+    padding-left: 20px;
+    margin: 20px 0;
+}
+
+ol li, ul li {
+    margin-bottom: 10px;
+}
+
+ul {
+    list-style-type: disc;
+}
+
+ol {
+    list-style-type: decimal;
+}
+
+/* Изображение */
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 20px auto;
+    border: 3px solid #ffc991;
+    border-radius: 8px;
+}
+
+.logo img{
+    border: 3px solid #ffffff;
+}
+
+.logo_h img{
+    border: 3px solid #ffffff;
+}
+
+/* Таблица */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+}
+
+table, th, td {
+    border: 1px solid #eeeeef;
+}
+
+th, td {
+    padding: 10px;
+    text-align: center;
+    color: #eeeeef;
+}
+
+th {
+    background-color: #291a18;
+}
+
+td {
+    background-color: #3c2925;
+}
+
+caption {
+    caption-side: top;
+    font-size: 1.2em;
+    margin-bottom: 10px;
+    color: #ffc991;
+}
+
+tfoot td {
+    font-weight: bold;
+}
+
+/* Ссылки */
+a {
+    color: #ffc991;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: #ffffff;
+}
 
 
+.modal {
+    display: none; /* Скрыть модальное окно по умолчанию */
+    position: fixed; /* Окончательное позиционирование */
+    z-index: 100; /* На переднем плане */
+    left: 0;
+    top: 0;
+    width: 100%; /* Полная ширина */
+    height: 100%; /* Полная высота */
+    background-color: rgba(0, 0, 0, 0.9); /* Прозрачный черный фон */
+    display: flex; /* Используем flexbox для центрирования */
+    justify-content: center; /* Центрирование по горизонтали */
+    align-items: center; /* Центрирование по вертикали */
+}
+
+.modal-content {
+    display: block;
+    margin-top: 10%;
+    width: 80%; /* Ширина изображения в модальном окне */
+    max-width: 1000px; /* Максимальная ширина */
+    height: auto; /* Автоматическая высота */
+    z-index: 100; /* На переднем плане */
+}
+
+
+
+.image-gallery {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center; /* Центрирование */
+    position: relative;
+    z-index: 2; /* Поднимите его выше остальных элементов */
+    padding: 20px; /* Отступы для улучшения визуализации */
+    border-radius: 10px; /* Закругление углов для стиля */
+}
+
+.image-gallery img {
+    margin: 10px; /* Отступы между изображениями */
+    max-width: 100%; /* Чтобы изображения не выходили за пределы контейнера */
+    height: auto; /* Автоматическая высота для пропорций */
+}
+
+
+
+
+.image_ img{
+    z-index: 100;
+}
+.image_ img{
+    z-index: 100;
+}
+
+
+
+.close {
+    color: white; /* Цвет крестика */
+    position: absolute; /* Меняем на absolute для правильного позиционирования */
+    top: 80px; /* Отступ сверху для крестика */
+    right: 30px; /* Отступ справа для крестика */
+    font-size: 30px; /* Размер шрифта */
+    font-weight: bold; /* Жирный шрифт */
+    cursor: pointer; /* Указатель при наведении */
+}
+
+
+
+.close:hover,
+.close:focus {
+    color: #bbb; /* Цвет при наведении */
+    text-decoration: none;
+    cursor: pointer; /* Указатель при наведении */
+}
+
+
+
+/*article1*/
 main {
     padding: 40px 20px;
     text-align: center;
