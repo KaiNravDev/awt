@@ -419,19 +419,12 @@ a:hover {
     margin: 10px; /* Отступы между изображениями */
     max-width: 100%; /* Чтобы изображения не выходили за пределы контейнера */
     height: auto; /* Автоматическая высота для пропорций */
+    transition: transform 0.3s ease;
 }
 
-
-
-
-.image_ img{
-    z-index: 100;
+.image-gallery img:hover {
+    transform: scale(1.1);
 }
-.image_ img{
-    z-index: 100;
-}
-
-
 
 .close {
     color: white; /* Цвет крестика */
