@@ -29,8 +29,8 @@ body::before {
 header {
     position: fixed;
     top: 1%;
-    left: 50%; /* Сместим левую часть хеддера на середину экрана */
-    transform: translateX(-50%); /* Выровняем его по центру */
+    left: 50%;
+    transform: translateX(-50%);
     z-index: 3;
     background-size: cover;
     background-position: center;
@@ -163,19 +163,23 @@ nav ul li a:hover::after {
     display: flex;
     flex-direction: column;
     align-items: center;
-    position: relative; /* Добавлено для управления z-index */
-    z-index: 2; /* Поднимите его выше остальных элементов */
-    padding: 20px; /* Отступы для улучшения визуализации */
-    border-radius: 10px; /* Закругление углов для стиля */
+    position: relative;
+    z-index: 2;
+    padding: 20px;
+    border-radius: 10px;
 }
 .text-container-2{
     display: flex;
     flex-direction: column;
     align-items: center;
-    position: relative; /* Добавлено для управления z-index */
-    z-index: 5; /* Поднимите его выше остальных элементов */
-    padding: 20px; /* Отступы для улучшения визуализации */
-    border-radius: 10px; /* Закругление углов для стиля */
+    position: relative;
+    z-index: 5;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.text-container-2 img{
+    z-index: 2;
 }
 
 .text-container h2{
