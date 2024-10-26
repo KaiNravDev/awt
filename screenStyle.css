@@ -1,6 +1,9 @@
+
+
+
 body {
     font-family: 'Press Start 2P', sans-serif;
-    font-size: 10px;
+    font-size: 62.5%;
     margin: 0;
     padding: 0;
     background-color: #291a18;
@@ -43,11 +46,11 @@ header {
     background-size: cover;
     background-position: center;
     color: #eeeeef;
-    width: 100%;
-    max-width: 1480px;
+    width: 90%;
+    max-width: 100%;
     height: 8vh;
-    padding: 10px 20px;
-    border-radius: 10px;
+    padding: 1% 2%;
+    border-radius: 1%;
     box-sizing: border-box;
     margin: 0 auto;
     display: flex;
@@ -65,7 +68,7 @@ header::before {
     width: 100%;
     height: 100%;
     background-color: rgba(28, 0, 0, 0.56);
-    border-radius: 10px;
+    border-radius: 2rem;
     z-index: -1;
 }
 
@@ -75,13 +78,15 @@ header .logo_h {
     position: relative;
 }
 
-header .logo_h img {
+header .logo_h svg {
     transition: transform 0.3s ease;
-    width: 45px;
+    width: 3vw;
     height: auto;
+    border: 0.3vw solid #ffffff;
+    border-radius: 1vw;
 }
 
-header .logo_h img:hover {
+header .logo_h svg:hover {
     transform: scale(1.2);
 }
 
@@ -90,10 +95,10 @@ header .logo_h::after {
     position: absolute;
     left: 0;
     right: 0;
-    bottom: -5px;
-    height: 4px;
+    bottom: -0.5rem;
+    height: 0.3rem;
     background-color: transparent;
-    border-radius: 10px;
+    border-radius: 1rem;
     transition: background-color 0.3s ease;
 }
 
@@ -103,10 +108,11 @@ header .logo_h:hover::after {
 
 .author-info {
     position: fixed;
-    bottom: 10px;
-    right: 10px;
+    bottom: 1rem;
+    right: 1rem;
     color: #eeeeef;
-    font-size: 8px;
+    font-size: 0.8vw;
+
 }
 
 .author-info a {
@@ -127,18 +133,22 @@ nav ul {
 }
 
 nav ul li {
+
     margin: 0;
     position: relative;
 }
 
+
 nav ul li a {
     color: #eeeeef;
     text-decoration: none;
-    font-size: 1.5em;
-    padding: 10px 15px;
+    font-size: 1vw; /* относительная единица для адаптивного уменьшения */
+    padding: 1rem 1.5rem;
     position: relative;
     display: inline-block;
-
+    white-space: nowrap; /* предотвращает перенос текста */
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 nav ul li a::after {
@@ -147,9 +157,9 @@ nav ul li a::after {
     left: 0;
     right: 0;
     bottom: 0;
-    height: 4px;
+    height: 0.3rem;
     background-color: transparent;
-    border-radius: 10px;
+    border-radius: 1rem;
     transition: background-color 0.3s ease;
 }
 
@@ -161,10 +171,15 @@ nav ul li a:hover::after {
     display: flex;
     flex-direction: column;
     align-items: center;
-    position: relative; /* Добавлено для управления z-index */
-    z-index: 2; /* Поднимите его выше остальных элементов */
-    padding: 20px; /* Отступы для улучшения визуализации */
-    border-radius: 10px; /* Закругление углов для стиля */
+    position: relative; /* Added for z-index control */
+    z-index: 2; /* Raise it above other elements */
+    padding: 2rem; /* Padding for better visualization */
+    border-radius: 1rem; /* Rounded corners for style */
+}
+
+.logo{
+    border: 0.2rem solid #ffffff;
+    border-radius: 1rem;
 }
 
 .text-container{
@@ -173,43 +188,43 @@ nav ul li a:hover::after {
     align-items: center;
     position: relative;
     z-index: 2;
-    padding: 20px;
-    border-radius: 10px;
+    padding: 2rem;
+    border-radius: 1rem;
 }
-.text-container-2{
+
+
+
+
+.image__example{
+    z-index: 2;
     display: flex;
     flex-direction: column;
     align-items: center;
     position: relative;
-    z-index: 5;
-    padding: 20px;
-    border-radius: 10px;
-}
-
-.text-container-2 img{
-    z-index: 2;
+    padding: 2rem;
+    border-radius: 1rem;
 }
 
 .text-container h2{
-    margin-top: 20px;
+    margin-top: 2rem;
     margin-bottom: 0;
 }
 
 .logo-container h1 {
-    font-size: 25px;
+    font-size: 2vw;
     color: #eeeeef;
     font-weight: normal;
     text-align: center;
-    margin-top: 10px;
+    margin-top: 1rem;
     transition: transform 0.1s ease-out;
 }
 
 .logo-container p {
-    font-size: 15px;
+    font-size: 1vw;
     color: rgba(238, 238, 239, 0.88);
     font-weight: normal;
     text-align: center;
-    margin-top: 10px;
+    margin-top: 1rem;
     transition: transform 0.1s ease-out;
     line-height: 1.5;
 }
@@ -217,8 +232,8 @@ nav ul li a:hover::after {
 .button-container {
     display: flex;
     justify-content: center; /* Центрирует кнопки */
-    gap: 20px; /* Расстояние между кнопками */
-    margin-top: 20px; /* Отступ сверху */
+    gap: 2vw; /* Расстояние между кнопками */
+    margin-top: 2vw; /* Отступ сверху */
 }
 
 .button {
@@ -228,7 +243,7 @@ nav ul li a:hover::after {
     --light-border: #dadee3;
     --scroll: 0;
     font-family: inherit;
-    font-size: .92em;
+    font-size: .92vw;
     font-weight: normal;
     text-transform: uppercase;
     box-sizing: border-box;
@@ -238,8 +253,8 @@ nav ul li a:hover::after {
     color: inherit;
     text-decoration: none;
     display: block;
-    padding: 20px 28px;
-    border: 1px solid var(--light-border);
+    padding: 2vw 2vw;
+    border: 0.2vw solid var(--light-border);
     transition: transform 0.3s ease;
 }
 
@@ -263,11 +278,11 @@ nav ul li a:hover::after {
 
 .firefly {
     position: absolute;
-    width: 8px;
-    height: 8px;
+    width: 0.7rem;
+    height: 0.7rem;
     border-radius: 50%;
     background-color: rgba(255, 146, 96, 0.8);
-    box-shadow: 0 0 8px rgba(255, 206, 200, 0.8);
+    box-shadow: 0 0 0.8rem rgba(255, 206, 200, 0.8);
     opacity: 0;
     animation: glow 1s infinite;
 }
@@ -283,35 +298,35 @@ nav ul li a:hover::after {
 
 h1, h2, h3 {
     color: #ffc991;
-    margin: 20px 0;
+    margin: 2rem 0;
 }
 
 h1 {
-    font-size: 2em;
+    font-size: 2vw;
 }
 
 h2 {
-    font-size: 1.8em;
+    font-size: 1.8vw;
 }
 
 h3 {
-    font-size: 1.5em;
+    font-size: 1.5vw;
 }
 
 p {
-    font-size: 1em;
+    font-size: 1vw;
     line-height: 1.6;
-    margin: 10px 0;
+    margin: 1rem 0;
     color: rgba(238, 238, 239, 0.88);
 }
 
 ol, ul {
-    padding-left: 20px;
-    margin: 20px 0;
+    padding-left: 2rem;
+    margin: 2rem 0;
 }
 
 ol li, ul li {
-    margin-bottom: 10px;
+    margin-bottom: 1rem;
 }
 
 ul {
@@ -326,31 +341,31 @@ img {
     max-width: 100%;
     height: auto;
     display: block;
-    margin: 20px auto;
-    border: 3px solid #ffc991;
-    border-radius: 8px;
+    margin: 2rem auto;
+    border: 0.3rem solid #ffc991;
+    border-radius: 0.8rem;
 }
 
 .logo img{
-    border: 3px solid #ffffff;
+    border: 0.3rem solid #ffffff;
 }
 
 .logo_h img{
-    border: 3px solid #ffffff;
+    border: 0.3rem solid #ffffff;
 }
 
 table {
     width: 100%;
     border-collapse: collapse;
-    margin: 20px 0;
+    margin: 2rem 0;
 }
 
 table, th, td {
-    border: 1px solid #eeeeef;
+    border: 0.1rem solid #eeeeef;
 }
 
 th, td {
-    padding: 10px;
+    padding: 1rem;
     text-align: center;
     color: #eeeeef;
 }
@@ -365,8 +380,8 @@ td {
 
 caption {
     caption-side: top;
-    font-size: 1.2em;
-    margin-bottom: 10px;
+    font-size: 1.2vw;
+    margin-bottom: 1rem;
     color: #ffc991;
 }
 
@@ -400,12 +415,9 @@ a:hover {
 }
 
 .modal-content {
-    display: block;
-    margin-top: 10%;
-    width: 80%;
-    max-width: 1000px;
-    height: auto;
-    z-index: 100;
+    margin: 6rem auto; /* 15% from the top and centered */
+    border: 0.2rem solid rgba(251, 180, 149, 0.8);
+    width: 80%; /* Could be more or less, depending on screen size */
 }
 
 
@@ -417,12 +429,12 @@ a:hover {
     justify-content: center;
     position: relative;
     z-index: 2;
-    padding: 20px;
-    border-radius: 10px;
+    padding: 2rem;
+    border-radius: 1rem;
 }
 
 .image-gallery img {
-    margin: 10px;
+    margin: 1rem;
     max-width: 100%;
     height: auto;
     transition: transform 0.3s ease;
@@ -435,9 +447,9 @@ a:hover {
 .close {
     color: white;
     position: absolute;
-    top: 80px;
-    right: 30px;
-    font-size: 30px;
+    top: 0.8rem;
+    right: 3rem;
+    font-size: 3vw;
     font-weight: bold;
     cursor: pointer;
 }
@@ -455,9 +467,55 @@ a:hover {
 
 /*article1*/
 main {
-    padding: 40px 20px;
+    padding: 4rem 2rem;
     text-align: center;
-    max-width: 890px;
+    max-width: 70rem;
     margin: auto;
     color: #eeeeef;
 }
+
+/* Медиазапросы */
+@media (max-width: 600px) {
+
+    header {
+        height: 8vh; /* Сохраняем высоту заголовка */
+        padding: 1% 2%; /* Уменьшение отступов */
+    }
+
+    nav ul li a {
+        padding: 0.5rem 1rem; /* Уменьшение отступов */
+    }
+
+    .modal-content {
+        width: 90%; /* Увеличение ширины модального окна */
+    }
+}
+
+@media (min-width: 601px) and (max-width: 1200px) {
+    header {
+        height: 8vh; /* Сохраняем высоту заголовка */
+        padding: 1% 2%; /* Сохраняем отступы */
+    }
+
+    nav ul li a {
+        padding: 0.8rem 1.5rem; /* Сохраняем отступы */
+    }
+
+    .button {
+        padding: 1.5rem 2rem; /* Увеличение отступов для кнопок */
+    }
+}
+
+@media (min-width: 1201px) {
+    main {
+        max-width: 80rem; /* Увеличение максимальной ширины основного содержимого */
+        padding: 4rem 2rem; /* Сохраняем отступы */
+    }
+
+    .button {
+        padding: 2rem 3rem; /* Увеличение отступов для кнопок */
+    }
+}
+
+
+

@@ -1,0 +1,35 @@
+/* printStyle.css */
+
+/* Základné nastavenia pre tlač */
+@media print {
+    /* Odstránenie pozadia */
+    body {
+        background: white !important; /* Biele pozadie */
+        color: black; /* Čierny text */
+    }
+
+    /* Skrytie elementov s doplnkovým obsahom */
+    header, nav, .author-info, .button-container, .modal, .fireflies-container {
+        display: none !important; /* Skrytie týchto elementov */
+    }
+
+    /* Zabezpečenie, že text je čitateľný */
+    p, h1, h2, h3, ul, ol {
+        font-family: serif; /* Pätkové písmo */
+        color: black; /* Čierny text */
+    }
+
+    a{
+        display: none !important;
+    }
+
+    table , th ,td , caption{
+        font-family: serif; /* Pätkové písmo */
+        color: black; /* Čierny text */
+    }
+
+    /* V prípade potreby pridať ďalšie úpravy pre tlač */
+    img {
+        display: none; /* Skrytie obrázkov */
+    }
+}
