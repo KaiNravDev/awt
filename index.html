@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Hlavná stránka</title>
+
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="screenStyle.css">
   <link rel="stylesheet" href="printStyle.css" media="print">
@@ -49,7 +50,160 @@
       <a href="article3.html" class="button button-article3">Kontakt</a>
     </div>
     <p>Blockbench je bezplatný editor 3D modelov, ktorý umožňuje jednoduché vytváranie low-poly modelov pre hry a aplikácie.</p>
+
+    <script src="https://cdn.jsdelivr.net/npm/mustache@4.2.0/mustache.min.js"></script>
+
+    <section id="feedback">
+      <h2>Nechajte svoj názor</h2>
+      <form id="opnFrm">
+        <!-- Pole pre meno -->
+        <label for="visitor-name">Vaše meno (povinné):</label>
+        <input type="text" id="visitor-name" name="visitor_name" required>
+
+        <!-- Pole pre email -->
+        <label for="visitor-email">Váš email (povinné):</label>
+        <input type="email" id="visitor-email" name="visitor_email" required>
+
+        <!-- Pole pre URL obrázka -->
+        <label for="visitor-image-url">Odkaz na váš obrázok:</label>
+        <input type="url" id="visitor-image-url" name="visitor_image_url">
+
+        <!-- Prepínače -->
+        <fieldset>
+          <legend>Ako ste sa o nás dozvedeli?</legend>
+          <label>
+            <input type="radio" name="source" value="search-engine" required>
+            Vyhľadávač
+          </label>
+          <label>
+            <input type="radio" name="source" value="social-media">
+            Sociálne siete
+          </label>
+        </fieldset>
+
+        <!-- Zaškrtávacie políčka -->
+        <fieldset>
+          <legend>Aké témy vás zaujímajú?</legend>
+          <label>
+            <input type="checkbox" name="topics[]" value="low-poly">
+            Low-poly
+          </label>
+          <label>
+            <input type="checkbox" name="topics[]" value="blockbench">
+            Blockbench
+          </label>
+          <label>
+            <input type="checkbox" name="topics[]" value="3d-models-showcase">
+            3D-models showcase
+          </label>
+        </fieldset>
+
+        <!-- Pole pre kľúčové slová -->
+        <label for="keywords">Kľúčové slová pre našu stránku:</label>
+        <input list="suggested-keywords" id="keywords" name="keywords">
+        <datalist id="suggested-keywords">
+          <option value="Blockbench">
+          <option value="3D modelovanie">
+          <option value="low-poly">
+          <option value="animácie">
+          <option value="textúry">
+          <option value="Minecraft modely">
+          <option value="UV mapovanie">
+          <option value="export modelov">
+          <option value="pluginy pre Blockbench">
+          <option value="úprava sietí">
+        </datalist>
+
+        <!-- Viacriadkové textové pole -->
+        <label for="visitor-feedback">Vaša spätná väzba (povinné):</label>
+        <textarea id="visitor-feedback" name="visitor_feedback" rows="5" required></textarea>
+
+        <!-- Tlačidlá на odosлание -->
+        <button type="submit">Odoslať</button>
+        <button type="reset">Vymazať</button>
+      </form>
+
+      <hr />
+
+      <h3>Vaše odpovede:</h3>
+      <div id="rendered-feedback"></div>
+    </section>
+
+    <script id="feedback-template" type="text/x-mustache-template">
+      <div class="feedback">
+        <p><strong>Meno:</strong> {{visitor_name}}</p>
+        <p><strong>Email:</strong> {{visitor_email}}</p>
+        <p><strong>Odkaz na obrázok:</strong> <a href="{{visitor_image_url}}" target="_blank">{{visitor_image_url}}</a></p>
+        <p><strong>Ako ste sa o nás dozvedeli:</strong> {{source}}</p>
+        <p><strong>Aké témy vás zaujímajú:</strong> {{#topics}}<span>{{.}}</span> {{/topics}}</p>
+        <p><strong>Kľúčové slová:</strong> {{keywords}}</p>
+        <p><strong>Spätná väzba:</strong> {{visitor_feedback}}</p>
+      </div>
+    </script>
+    <script>
+
+
+      const opnFrm = document.getElementById("opnFrm");
+      const renderedFeedback = document.getElementById("rendered-feedback");
+      const feedbackTemplate = document.getElementById("feedback-template").innerHTML;
+
+      // Обработчик отправки формы
+      opnFrm.addEventListener("submit", function (event) {
+        event.preventDefault(); // Останавливаем стандартное поведение
+
+        // Собираем данные формы
+        const formData = new FormData(opnFrm);
+        const visitorName = formData.get("visitor_name");
+        const visitorEmail = formData.get("visitor_email");
+        const visitorImageUrl = formData.get("visitor_image_url") || "—";
+        const source = formData.get("source") || "Neznámy";
+        const topics = formData.getAll("topics[]");
+        const keywords = formData.get("keywords") || "—";
+        const visitorFeedback = formData.get("visitor_feedback");
+
+        // Формируем объект для рендеринга
+        const feedbackData = {
+          visitor_name: visitorName,
+          visitor_email: visitorEmail,
+          visitor_image_url: visitorImageUrl,
+          source: source,
+          topics: topics.length > 0 ? topics : ["—"],
+          keywords: keywords,
+          visitor_feedback: visitorFeedback,
+        };
+
+        // Рендерим через Mustache
+        const rendered = Mustache.render(feedbackTemplate, feedbackData);
+        renderedFeedback.innerHTML += rendered;
+
+        // Сохраняем данные в localStorage
+        const comments = JSON.parse(localStorage.getItem("myFeedbackComments")) || [];
+        comments.push(feedbackData);
+        localStorage.setItem("myFeedbackComments", JSON.stringify(comments));
+
+        // Сбрасываем форму
+        opnFrm.reset();
+      });
+
+      // Загружаем сохранённые данные при загрузке страницы
+      window.addEventListener("load", function () {
+        const comments = JSON.parse(localStorage.getItem("myFeedbackComments")) || [];
+        comments.forEach((feedbackData) => {
+          const rendered = Mustache.render(feedbackTemplate, feedbackData);
+          renderedFeedback.innerHTML += rendered;
+        });
+      });
+
+    </script>
+
+
+
+
   </div>
+
+
+
+
 </main>
 
 <div class="author-info">
@@ -68,6 +222,7 @@
 
     logoContainer.style.transform = `translate(${moveX}px, ${moveY}px)`;
   });
+
 </script>
 <script>
   document.addEventListener('DOMContentLoaded', () => {
