@@ -1,0 +1,292 @@
+/* Общие стили */
+body {
+    font-family: 'Press Start 2P', cursive; /* Пиксельный шрифт везде */
+    margin: 0;
+    padding: 0;
+    color: #fff;
+    background: #2b2b2b; /* Темный фон */
+    line-height: 1.6;
+    text-transform: uppercase; /* Заглавные буквы */
+    font-size: 14px; /* Базовый размер текста */
+    image-rendering: pixelated; /* Пиксельный рендеринг */
+}
+a{
+    color: white;
+}
+/* Header */
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 40px;
+    background-color: #ff8c00;
+    color: white;
+    border: 4px solid #000;
+    box-shadow: 8px 8px 0 #000; /* Тень для мультяшности */
+    flex-wrap: wrap; /* Для адаптивности */
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2rem;
+}
+
+/* Навигация */
+nav ul {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap; /* Перенос пунктов при недостатке места */
+    gap: 20px;
+    padding: 0;
+    justify-content: center;
+}
+
+nav ul li a {
+    padding: 10px 20px;
+    text-decoration: none;
+    color: white;
+    background-color: #ff8c00;
+    border: 4px solid #000;
+    display: inline-block;
+    box-shadow: 8px 8px 0 #000;
+    transition: transform 0.2s;
+}
+
+nav ul li a:hover {
+    transform: translateY(-5px);
+    background-color: #e67e22;
+}
+
+/* Основной блок */
+main {
+    max-width: 90%; /* Адаптивная ширина */
+    margin: 40px auto;
+    padding: 20px;
+    background: #333;
+    border: 4px solid #000;
+    box-shadow: 8px 8px 0 #000;
+}
+
+/* Статьи */
+article {
+    border: 4px solid #000;
+    padding: 20px;
+    margin: 20px 0;
+    background-color: #444;
+    box-shadow: 8px 8px 0 #000;
+}
+
+article h2 {
+    margin: 0;
+    font-size: 1.5rem;
+    color: #ff8c00;
+}
+
+article p {
+    font-size: 1rem;
+    color: #ddd;
+}
+
+article footer button {
+    background: #ff8c00;
+    color: white;
+    border: 4px solid #000;
+    padding: 10px 20px;
+    box-shadow: 6px 6px 0 #000;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+article footer button:hover {
+    transform: translateY(-5px);
+    background-color: #e67e22;
+}
+
+/* Кнопка Back */
+#backButton {
+    display: inline-block;
+    margin: 10px 0;
+    padding: 10px 20px;
+    background-color: #ff5555;
+    color: white;
+    border: 4px solid #000;
+    box-shadow: 8px 8px 0 #000;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+#backButton:hover {
+    transform: translateY(-5px);
+    background-color: #ff3333;
+}
+
+/* Формы */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+form label {
+    font-size: 1rem;
+    color: #fff;
+}
+
+form input,
+form textarea,
+form button {
+    padding: 10px;
+    font-size: 1rem;
+    border: 4px solid #000;
+    background-color: #444;
+    color: #fff;
+    box-shadow: 6px 6px 0 #000;
+}
+
+form button {
+    background: #ff8c00;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+form button:hover {
+    transform: translateY(-5px);
+    background-color: #e67e22;
+}
+
+/* Блок пользователя */
+#user-info {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap; /* Элементы переносятся при недостатке места */
+    justify-content: center;
+    text-align: center;
+    background-color: #555;
+    color: white;
+    padding: 10px;
+    border: 4px solid #000;
+    box-shadow: 8px 8px 0 #000;
+}
+
+#user-info img {
+    width: 80px;
+    height: 80px;
+    margin-right: 20px;
+    border: 4px solid #000;
+}
+
+#user-info p {
+    font-size: 1.2rem;
+}
+
+#user-info button {
+    margin-left: auto;
+    background: #ff8c00;
+    border: 4px solid #000;
+    padding: 10px 20px;
+    box-shadow: 6px 6px 0 #000;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+#user-info button:hover {
+    transform: translateY(-5px);
+    background-color: #e67e22;
+}
+
+/* Медиа-запросы для адаптивности */
+
+/* Устройства шириной до 768px */
+@media (max-width: 768px) {
+    body {
+        font-size: 12px; /* Уменьшаем базовый размер текста */
+    }
+
+    header {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    nav ul {
+        flex-direction: column; /* Вертикальное меню */
+        align-items: center;
+        gap: 15px;
+    }
+
+    main {
+        padding: 10px;
+    }
+
+    article {
+        padding: 10px;
+        box-shadow: 4px 4px 0 #000; /* Меньшая тень */
+    }
+}
+
+/* Устройства шириной до 480px */
+@media (max-width: 480px) {
+    header h1 {
+        font-size: 1rem; /* Уменьшаем размер заголовка */
+        text-align: center;
+    }
+
+    nav ul {
+        gap: 10px;
+    }
+
+    article h2 {
+        font-size: 1.2rem; /* Уменьшаем заголовок статьи */
+    }
+
+    #user-info {
+        flex-direction: column;
+    }
+
+    form button {
+        font-size: 0.8rem; /* Уменьшаем размер кнопок */
+        padding: 5px 10px;
+    }
+}
+
+
+/* Контейнер для плавающих плюсов */
+#floating-plus-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; /* Чтобы не мешал взаимодействию с другими элементами */
+    overflow: hidden;
+    z-index: 100; /* Поверх всего контента */
+}
+
+/* Плавающие плюсы */
+.floating-plus {
+    position: absolute;
+    font-family: 'Press Start 2P', cursive; /* Пиксельный стиль */
+    color: #ffffff; /* Оранжевый цвет */
+    font-size: 1rem;
+    animation: float-up 3s ease-out forwards, fade-out 3s ease-out forwards;
+}
+
+/* Анимация движения вверх */
+@keyframes float-up {
+    0% {
+        transform: translateY(0);
+    }
+    100% {
+        transform: translateY(-200px);
+    }
+}
+
+/* Анимация исчезновения */
+@keyframes fade-out {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
