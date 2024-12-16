@@ -10,8 +10,8 @@ const routes = [
         getTemplate: (target) => {
             document.getElementById(target).innerHTML = `
                 <section>
-                    <h2>Welcome to the Bears Blog!</h2>
-                    <p>Explore the fascinating world of bears through articles, opinions, and more!</p>
+                     <h2>Welcome to Blockbench Hub!</h2>
+                     <p>Discover the art of 3D modeling and animation using Blockbench. Dive into tutorials, share your creations, and connect with the community.</p>
                 </section>`;
         }
     },
