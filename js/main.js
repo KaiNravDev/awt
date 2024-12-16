@@ -1,5 +1,5 @@
 
-
+let articles = JSON.parse(localStorage.getItem("articles")) || [];
 
 export function ajaxRequest(method, url, data = null) {
     return new Promise((resolve, reject) => {
@@ -149,6 +149,24 @@ export function fetchAndDisplayArticleDetail(target, id) {
         
         document.getElementById(target).innerHTML = template;
 
+        // Відображення коментарів з пагінацією
+        displayCommentsWithPagination(article.id, "commentsSection");
+
+        // Обробник для форми додавання коментарів
+        document.getElementById("commentForm").onsubmit = (e) => {
+            e.preventDefault();
+            const author = document.getElementById("commentAuthor").value.trim();
+            const content = document.getElementById("commentContent").value.trim();
+
+            if (author && content) {
+                addComment(article.id, author, content);
+                displayCommentsWithPagination(article.id, "commentsSection");
+                document.getElementById("commentForm").reset();
+            } else {
+                alert("Both name and comment are required!");
+            }
+        };
+
         // Кнопка "Back"
         document.getElementById("backButton").onclick = () => {
             location.hash = "#articles";
@@ -166,29 +184,11 @@ export function fetchAndDisplayArticleDetail(target, id) {
             location.hash = `#artEdit/${id}`;
             editArticle(id);
         };
-
-        // Додаємо обробник для форми коментарів
-        document.getElementById("commentForm").onsubmit = (e) => {
-            e.preventDefault();
-            const commentAuthor = document.getElementById("commentAuthor").value.trim();
-            const commentContent = document.getElementById("commentContent").value.trim();
-
-            if (commentAuthor && commentContent) {
-                addComment(id, commentAuthor, commentContent);
-                document.getElementById("commentAuthor").value = ""; // Очищаємо поле автора
-                document.getElementById("commentContent").value = ""; // Очищаємо поле коментаря
-                displayComments(id, "commentsSection");
-            } else {
-                alert("Both name and comment are required!");
-            }
-        };
-
-        // Відображення коментарів
-        displayComments(id, "commentsSection");
     } else {
         document.getElementById(target).innerHTML = `<p>Article not found.</p>`;
     }
 }
+
 
 
 
@@ -329,8 +329,8 @@ export function navigatePage(direction) {
     fetchAndDisplayArticles('router-view', (newPage - 1) * 10);
 }
 
-let comments = JSON.parse(localStorage.getItem("comments")) || {};
 
+let comments = JSON.parse(localStorage.getItem("comments")) || {};
 export function addComment(articleId, author, content) {
     if (!comments[articleId]) {
         comments[articleId] = [];
@@ -343,6 +343,7 @@ export function addComment(articleId, author, content) {
     comments[articleId].push(newComment);
     localStorage.setItem("comments", JSON.stringify(comments));
 }
+
 
 
 export function displayComments(articleId, targetId) {
@@ -361,4 +362,67 @@ export function displayComments(articleId, targetId) {
             )
             .join("");
     }
+}
+
+export function displayCommentsWithPagination(articleId, targetId, page = 1) {
+    const commentsSection = document.getElementById(targetId);
+    const articleComments = comments[articleId] || [];
+    const commentsPerPage = 10; // Кількість коментарів на сторінку
+    const totalComments = articleComments.length;
+    const totalPages = Math.ceil(totalComments / commentsPerPage);
+
+    // Вираховуємо межі для поточної сторінки
+    const start = (page - 1) * commentsPerPage;
+    const end = start + commentsPerPage;
+    const commentsToShow = articleComments.slice(start, end);
+
+    // Рендеримо коментарі
+    if (commentsToShow.length === 0) {
+        commentsSection.innerHTML = "<p>No comments yet. Be the first to comment!</p>";
+    } else {
+        commentsSection.innerHTML = commentsToShow
+            .map(
+                comment => `
+                <div class="comment">
+                    <p><strong>${comment.author}</strong> (${comment.date})</p>
+                    <p>${comment.content}</p>
+                </div>`
+            )
+            .join("");
+    }
+
+    // Додаємо кнопки пагінації
+    const paginationControls = document.createElement("div");
+    paginationControls.className = "pagination-controls";
+
+    if (page > 1) {
+        const prevButton = document.createElement("button");
+        prevButton.textContent = "Previous";
+        prevButton.onclick = () => {
+            displayCommentsWithPagination(articleId, targetId, page - 1);
+        };
+        paginationControls.appendChild(prevButton);
+    }
+
+    // Відображення номерів сторінок
+    for (let i = 1; i <= totalPages; i++) {
+        const pageButton = document.createElement("button");
+        pageButton.textContent = i;
+        pageButton.className = i === page ? "active-page" : "";
+        pageButton.onclick = () => {
+            displayCommentsWithPagination(articleId, targetId, i);
+        };
+        paginationControls.appendChild(pageButton);
+    }
+
+    if (page < totalPages) {
+        const nextButton = document.createElement("button");
+        nextButton.textContent = "Next";
+        nextButton.onclick = () => {
+            displayCommentsWithPagination(articleId, targetId, page + 1);
+        };
+        paginationControls.appendChild(nextButton);
+    }
+
+    commentsSection.appendChild(paginationControls);
 }
